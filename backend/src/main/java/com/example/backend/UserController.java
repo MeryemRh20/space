@@ -62,6 +62,16 @@ public class UserController {
         return ResponseEntity.ok("Password changed successfully.");
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     // DTO for password change
     public static class PasswordChangeRequest {
         private String currentPassword;
