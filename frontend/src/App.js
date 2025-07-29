@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './index.css';
 
@@ -15,6 +15,16 @@ import AdminDashboard from './AdminDashboard';
 
 function AppContent() {
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="landing-page">
       <nav className="navbar">
@@ -24,15 +34,24 @@ function AppContent() {
           </svg>
           <span className="logo-text" style={{fontWeight: '700', color: '#111', fontSize: '1.3rem', fontFamily: 'inherit', marginLeft: '0.5rem'}}>Workbeat</span>
         </div>
-        <ul className="navbar-menu">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#gallery">Spaces</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+          <li><a href="#hero" onClick={closeMobileMenu}>Home</a></li>
+          <li><a href="#about" onClick={closeMobileMenu}>About</a></li>
+          <li><a href="#services" onClick={closeMobileMenu}>Services</a></li>
+          <li><a href="#pricing" onClick={closeMobileMenu}>Pricing</a></li>
+          <li><a href="#gallery" onClick={closeMobileMenu}>Spaces</a></li>
+          <li><a href="#contact" onClick={closeMobileMenu}>Contact</a></li>
         </ul>
         <button className="book-tour" onClick={() => navigate('/login')}>Connect</button>
+        <button 
+          className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
       <section id="hero" className="hero-section">
       <div className="hero-illustration" aria-label="coworking-illustration">
