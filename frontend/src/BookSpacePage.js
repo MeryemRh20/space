@@ -122,7 +122,10 @@ export default function BookSpacePage() {
   const [error, setError] = useState(null);
   const [form, setForm] = useState({ spaceId: '', startTime: '', endTime: '', specialRequests: '', pack: '' });
   const [bookingStatus, setBookingStatus] = useState(null);
-  const user = JSON.parse(localStorage.getItem('user')) || {};
+  const currentUserId = localStorage.getItem('currentUserId');
+const user = currentUserId
+  ? JSON.parse(localStorage.getItem(`user_${currentUserId}`)) || {}
+  : {};
   const navigate = useNavigate();
 
   useEffect(() => {

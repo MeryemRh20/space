@@ -5,7 +5,31 @@ import axios from 'axios';
 import pici from './assets/PICTURE.png';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
-function Stats({ stats, colors }) {
+// Updated Blue + Gold color palette
+const colors = {
+  primary: 'rgb(28, 93, 233)',       // Dark blue
+  primaryDark: 'rgb(89, 174, 231)',   // Navy blue
+  primaryLight: '#3B82F6',  // Bright blue
+  secondary: '#0D9488',     // Green
+  secondaryDark: '#0D9488', // Dark gold
+  accent: '#0D9488',       // Orange accent
+  text: '#1F2937',         // Dark gray
+  textSecondary: '#4B5563', // Medium gray
+  lightText: '#F9FAFB',     // Light text
+  background: '#F8FAFC',    // Light background
+  card: '#FFFFFF',         // White cards
+  border: '#E5E7EB',       // Light border
+  glass: 'rgba(255, 255, 255, 0.95)',
+  glassBorder: 'rgba(255, 255, 255, 0.3)',
+  shadow: '0 4px 20px rgba(30, 58, 138, 0.08)',
+  status: {
+    pending: { background: '#FEF3C7', color: '#D97706' },
+    confirmed: { background: '#DBEAFE', color: '#1E40AF' },
+    cancelled: { background: '#F3F4F6', color: '#6B7280' },
+  },
+};
+
+function Stats({ stats }) {
   return (
     <div style={{ 
       display: 'grid', 
@@ -29,7 +53,7 @@ function Stats({ stats, colors }) {
           <div style={{ 
             fontSize: '2.5rem', 
             marginBottom: '1rem',
-            color: colors.primary,
+            color: colors.secondary,
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
@@ -47,7 +71,7 @@ function Stats({ stats, colors }) {
           <div style={{ 
             fontSize: '1.75rem', 
             fontWeight: '700', 
-            color: colors.primaryDark,
+            color: colors.primary,
             letterSpacing: '-0.5px'
           }}>
             {stat.value}
@@ -58,7 +82,7 @@ function Stats({ stats, colors }) {
   );
 }
 
-function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
+function UsersTab({ users, onEditUser, onDeleteUser, onUserUpdated }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 5;
@@ -114,11 +138,11 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
         justifyContent: 'space-between', 
         alignItems: 'center', 
         marginBottom: '2.5rem',
-        background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
+        background: `linear-gradient(to bottom, ${colors.card} 0%, ${colors.background} 100%)`,
         padding: '2rem',
         borderRadius: '24px',
-        boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
-        border: '1px solid rgba(242, 243, 247, 0.8)',
+        boxShadow: colors.shadow,
+        border: `1px solid ${colors.border}`,
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -129,7 +153,7 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
           left: 0,
           width: '6px',
           height: '100%',
-          background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+          background: `linear-gradient(to bottom, ${colors.primary} 0%, ${colors.secondary} 100%)`
         }}></div>
 
         <h2 style={{ 
@@ -138,7 +162,7 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
           margin: 0,
           paddingLeft: '1rem',
           fontFamily: "'Poppins', sans-serif",
-          background: 'linear-gradient(90deg, #2F3542 0%, #57606F 100%)',
+          background: `linear-gradient(90deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
           color: 'transparent',
@@ -159,7 +183,7 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
             style={{
               padding: '0.75rem 1.25rem',
               borderRadius: '12px',
-              border: '1px solid rgba(242, 243, 247, 0.8)',
+              border: `1px solid ${colors.border}`,
               fontSize: '0.95rem',
               minWidth: '250px',
               outline: 'none',
@@ -170,10 +194,10 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
       </div>
 
       <div style={{ 
-        background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
+        background: colors.card,
         borderRadius: '24px',
-        boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
-        border: '1px solid rgba(242, 243, 247, 0.8)',
+        boxShadow: colors.shadow,
+        border: `1px solid ${colors.border}`,
         padding: '2rem',
         marginBottom: '2rem'
       }}>
@@ -183,7 +207,7 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
           gap: '1rem',
           marginBottom: '1.5rem',
           fontWeight: '600',
-          color: '#57606F',
+          color: colors.primary,
           padding: '0 1rem'
         }}>
           <div>Name</div>
@@ -201,18 +225,18 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
                 gridTemplateColumns: '1fr 1fr 1fr auto',
                 gap: '1rem',
                 alignItems: 'center',
-                background: 'white',
+                background: colors.card,
                 borderRadius: '16px',
                 padding: '1.5rem',
                 marginBottom: '1rem',
-                boxShadow: '0 4px 16px rgba(60, 72, 88, 0.05)',
-                border: '1px solid rgba(242, 243, 247, 0.8)'
+                boxShadow: '0 4px 16px rgba(0,0,0,0.05)',
+                border: `1px solid ${colors.border}`
               }}
             >
-              <div style={{ fontWeight: '600', color: '#2F3542' }}>
+              <div style={{ fontWeight: '600', color: colors.text }}>
                 {user.name}
               </div>
-              <div style={{ color: '#57606F' }}>{user.email}</div>
+              <div style={{ color: colors.textSecondary }}>{user.email}</div>
               <div>
                 <span style={{
                   padding: '0.25rem 0.75rem',
@@ -220,11 +244,11 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
                   fontSize: '0.85rem',
                   fontWeight: '600',
                   background: user.role === 'admin' 
-                    ? 'rgba(78, 205, 196, 0.15)' 
-                    : 'rgba(255, 107, 107, 0.15)',
+                    ? colors.status.confirmed.background 
+                    : colors.status.pending.background,
                   color: user.role === 'admin' 
-                    ? '#4ECDC4' 
-                    : '#FF6B6B'
+                    ? colors.status.confirmed.color 
+                    : colors.status.pending.color
                 }}>
                   {user.role}
                 </span>
@@ -236,10 +260,10 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
                   onClick={() => openEdit(user)}
                   style={{
                     background: 'transparent',
-                    border: '1px solid #4ECDC4',
+                    border: `1px solid ${colors.primary}`,
                     borderRadius: '8px',
                     padding: '0.5rem',
-                    color: '#4ECDC4',
+                    color: colors.primary,
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -254,10 +278,10 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
                   onClick={() => onDeleteUser(user.id)}
                   style={{
                     background: 'transparent',
-                    border: '1px solid #FF6B6B',
+                    border: `1px solid ${colors.accent}`,
                     borderRadius: '8px',
                     padding: '0.5rem',
-                    color: '#FF6B6B',
+                    color: colors.accent,
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -270,7 +294,7 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
             </motion.div>
           ))
         ) : (
-          <div style={{ padding: '3rem', textAlign: 'center', color: '#A4B0BE', fontFamily: "'Poppins', sans-serif" }}>
+          <div style={{ padding: '3rem', textAlign: 'center', color: colors.textSecondary, fontFamily: "'Poppins', sans-serif" }}>
             No users found
           </div>
         )}
@@ -284,24 +308,24 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}>
             <form onSubmit={handleEditSubmit} style={{
-              background: 'white',
+              background: colors.card,
               borderRadius: '16px',
               padding: '2rem',
               minWidth: 320,
-              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+              boxShadow: colors.shadow,
               display: 'flex', flexDirection: 'column', gap: '1.2rem',
               position: 'relative'
             }}>
-              <h3 style={{ margin: 0 }}>Edit User</h3>
-              <label>Name
-                <input type="text" value={editForm.name} onChange={e => setEditForm(f => ({ ...f, name: e.target.value }))} required style={{ width: '100%', padding: '0.5rem', borderRadius: 8, border: '1px solid #eee', marginTop: 4 }} />
+              <h3 style={{ margin: 0, color: colors.primary }}>Edit User</h3>
+              <label style={{ color: colors.text }}>Name
+                <input type="text" value={editForm.name} onChange={e => setEditForm(f => ({ ...f, name: e.target.value }))} required style={{ width: '100%', padding: '0.5rem', borderRadius: 8, border: `1px solid ${colors.border}`, marginTop: 4 }} />
               </label>
-              <label>Email
-                <input type="email" value={editForm.email} onChange={e => setEditForm(f => ({ ...f, email: e.target.value }))} required style={{ width: '100%', padding: '0.5rem', borderRadius: 8, border: '1px solid #eee', marginTop: 4 }} />
+              <label style={{ color: colors.text }}>Email
+                <input type="email" value={editForm.email} onChange={e => setEditForm(f => ({ ...f, email: e.target.value }))} required style={{ width: '100%', padding: '0.5rem', borderRadius: 8, border: `1px solid ${colors.border}`, marginTop: 4 }} />
               </label>
               <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                <button type="button" onClick={() => setEditUser(null)} style={{ flex: 1, background: '#eee', border: 'none', borderRadius: 8, padding: '0.7rem', cursor: 'pointer' }}>Cancel</button>
-                <button type="submit" disabled={editLoading} style={{ flex: 1, background: '#21c87a', color: 'white', border: 'none', borderRadius: 8, padding: '0.7rem', cursor: 'pointer' }}>{editLoading ? 'Saving...' : 'Save'}</button>
+                <button type="button" onClick={() => setEditUser(null)} style={{ flex: 1, background: colors.border, border: 'none', borderRadius: 8, padding: '0.7rem', cursor: 'pointer' }}>Cancel</button>
+                <button type="submit" disabled={editLoading} style={{ flex: 1, background: colors.primary, color: 'white', border: 'none', borderRadius: 8, padding: '0.7rem', cursor: 'pointer' }}>{editLoading ? 'Saving...' : 'Save'}</button>
               </div>
             </form>
           </div>
@@ -322,8 +346,8 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
             disabled={currentPage === 1}
             style={{
               padding: '0.5rem 1rem',
-              background: currentPage === 1 ? '#e2e8f0' : '#4ECDC4',
-              color: currentPage === 1 ? '#64748B' : 'white',
+              background: currentPage === 1 ? colors.border : colors.primary,
+              color: currentPage === 1 ? colors.textSecondary : 'white',
               border: 'none',
               borderRadius: '8px',
               cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
@@ -341,9 +365,9 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
               onClick={() => setCurrentPage(number)}
               style={{
                 padding: '0.5rem 1rem',
-                background: number === currentPage ? '#4ECDC4' : 'transparent',
-                color: number === currentPage ? 'white' : '#2F3542',
-                border: number === currentPage ? 'none' : '1px solid #CBD5E1',
+                background: number === currentPage ? colors.primary : 'transparent',
+                color: number === currentPage ? 'white' : colors.text,
+                border: number === currentPage ? 'none' : `1px solid ${colors.border}`,
                 borderRadius: '8px',
                 cursor: 'pointer',
                 fontSize: '0.9rem'
@@ -360,8 +384,8 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
             disabled={currentPage === totalPages}
             style={{
               padding: '0.5rem 1rem',
-              background: currentPage === totalPages ? '#e2e8f0' : '#4ECDC4',
-              color: currentPage === totalPages ? '#64748B' : 'white',
+              background: currentPage === totalPages ? colors.border : colors.primary,
+              color: currentPage === totalPages ? colors.textSecondary : 'white',
               border: 'none',
               borderRadius: '8px',
               cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
@@ -376,7 +400,7 @@ function UsersTab({ colors, users, onEditUser, onDeleteUser, onUserUpdated }) {
   );
 }
 
-function BookingsManagementTab({ colors, bookings, onStatusChange }) {
+function BookingsManagementTab({ bookings, onStatusChange }) {
   return (
     <div style={{
       maxWidth: '1000px',
@@ -390,12 +414,12 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
       {bookings && bookings.map((booking) => (
         <motion.div
           key={booking.id}
-          whileHover={{ y: -8, boxShadow: '0 12px 40px 0 rgba(33,200,122,0.18)' }}
+          whileHover={{ y: -8, boxShadow: '0 12px 40px 0 rgba(30, 58, 138, 0.18)' }}
           style={{
             background: 'rgba(255,255,255,0.25)',
             backdropFilter: 'blur(18px)',
             borderRadius: '28px',
-            boxShadow: '0 8px 32px 0 rgba(33,200,122,0.13)',
+            boxShadow: '0 8px 32px 0 rgba(30, 58, 138, 0.13)',
             border: 'none',
             padding: '2.2rem 2.7rem 2.2rem 0',
             display: 'grid',
@@ -408,12 +432,14 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
         >
           {/* Vertical accent bar */}
           <div style={{
-            background: booking.status === 'confirmed' ? 'linear-gradient(180deg, #10b981 0%, #3b82f6 100%)' : booking.status === 'rejected' ? 'linear-gradient(180deg, #ef4444 0%, #f59e0b 100%)' : 'linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%)',
+            background: booking.status === 'confirmed' ? `linear-gradient(180deg, ${colors.primary} 0%, ${colors.secondary} 100%)` : 
+                   booking.status === 'rejected' ? `linear-gradient(180deg, ${colors.accent} 0%, ${colors.secondaryDark} 100%)` : 
+                   `linear-gradient(180deg, ${colors.secondary} 0%, ${colors.secondaryDark} 100%)`,
             width: '12px',
             height: '100%',
             borderRadius: '16px',
             marginRight: '2rem',
-            boxShadow: '0 0 12px 0 rgba(33,200,122,0.13)',
+            boxShadow: '0 0 12px 0 rgba(30, 58, 138, 0.13)',
           }} />
           <div style={{ width: '100%', position: 'relative', paddingLeft: '3rem' }}>
             {/* Floating status badge */}
@@ -425,17 +451,19 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
               borderRadius: '16px',
               fontWeight: 800,
               fontSize: '1.08rem',
-              background: booking.status === 'confirmed' ? 'linear-gradient(90deg, #10b981 0%, #3b82f6 100%)' : booking.status === 'rejected' ? 'linear-gradient(90deg, #ef4444 0%, #f59e0b 100%)' : 'linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%)',
+              background: booking.status === 'confirmed' ? `linear-gradient(90deg, ${colors.primary} 0%, ${colors.secondary} 100%)` : 
+                         booking.status === 'rejected' ? `linear-gradient(90deg, ${colors.accent} 0%, ${colors.secondaryDark} 100%)` : 
+                         `linear-gradient(90deg, ${colors.secondary} 0%, ${colors.secondaryDark} 100%)`,
               color: '#fff',
               border: 'none',
               letterSpacing: '0.04em',
-              boxShadow: '0 2px 12px rgba(33,200,122,0.13)',
+              boxShadow: '0 2px 12px rgba(30, 58, 138, 0.13)',
               textTransform: 'capitalize',
               zIndex: 2,
               transition: 'background 0.2s',
             }}>{booking.status}</span>
             {/* Space name/title */}
-            <div style={{ fontWeight: 800, fontSize: '1.45rem', color: '#1e293b', letterSpacing: '-1px', marginBottom: '0.7rem', textShadow: '0 2px 8px rgba(16,185,129,0.04)' }}>
+            <div style={{ fontWeight: 800, fontSize: '1.45rem', color: colors.text, letterSpacing: '-1px', marginBottom: '0.7rem', textShadow: `0 2px 8px ${colors.primary}22` }}>
               {booking.spaceName}
             </div>
             {/* Two-column info grid */}
@@ -444,14 +472,14 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
               gridTemplateColumns: '1fr 1fr',
               gap: '1.3rem 2.5rem',
               fontSize: '1.08rem',
-              color: '#374151',
+              color: colors.text,
               marginBottom: '1.2rem',
               alignItems: 'center',
             }}>
-              <div><span style={{ color: '#6b7280', fontWeight: 600 }}>User:</span> <span style={{ fontWeight: 700 }}>{booking.userName}</span></div>
-              <div><span style={{ color: '#6b7280', fontWeight: 600 }}>Reservation ID:</span> <span style={{ fontWeight: 700 }}>{booking.id}</span></div>
-              <div><span style={{ color: '#6b7280', fontWeight: 600 }}>Start:</span> <span style={{ fontWeight: 700 }}>{formatDateTime(booking.startTime)}</span></div>
-              <div><span style={{ color: '#6b7280', fontWeight: 600 }}>End:</span> <span style={{ fontWeight: 700 }}>{formatDateTime(booking.endTime)}</span></div>
+              <div><span style={{ color: colors.textSecondary, fontWeight: 600 }}>User:</span> <span style={{ fontWeight: 700 }}>{booking.userName}</span></div>
+              <div><span style={{ color: colors.textSecondary, fontWeight: 600 }}>Reservation ID:</span> <span style={{ fontWeight: 700 }}>{booking.id}</span></div>
+              <div><span style={{ color: colors.textSecondary, fontWeight: 600 }}>Start:</span> <span style={{ fontWeight: 700 }}>{formatDateTime(booking.startTime)}</span></div>
+              <div><span style={{ color: colors.textSecondary, fontWeight: 600 }}>End:</span> <span style={{ fontWeight: 700 }}>{formatDateTime(booking.endTime)}</span></div>
             </div>
             {booking.status === 'pending' && (
               <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.2rem' }}>
@@ -461,7 +489,7 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
                   onClick={() => onStatusChange(booking.id, 'confirmed')}
                   style={{
                     flex: 1,
-                    background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+                    background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
                     color: 'white',
                     border: 'none',
                     borderRadius: '14px',
@@ -475,7 +503,7 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '0.7rem',
-                    boxShadow: '0 2px 12px rgba(16,185,129,0.13)'
+                    boxShadow: `0 2px 12px ${colors.primary}13`
                   }}
                 >
                   <span></span>
@@ -487,7 +515,7 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
                   onClick={() => onStatusChange(booking.id, 'rejected')}
                   style={{
                     flex: 1,
-                    background: 'linear-gradient(135deg, #ef4444 0%, #f59e0b 100%)',
+                    background: `linear-gradient(135deg, ${colors.accent} 0%, ${colors.secondaryDark} 100%)`,
                     color: 'white',
                     border: 'none',
                     borderRadius: '14px',
@@ -501,7 +529,7 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '0.7rem',
-                    boxShadow: '0 2px 12px rgba(239,68,68,0.13)'
+                    boxShadow: `0 2px 12px ${colors.accent}13`
                   }}
                 >
                   <span></span>
@@ -516,7 +544,7 @@ function BookingsManagementTab({ colors, bookings, onStatusChange }) {
   );
 }
 
-function AnalyticsDashboard({ colors, reservations, users, spaces }) {
+function AnalyticsDashboard({ reservations, users, spaces }) {
   const [timeRange, setTimeRange] = useState('7d');
   const [chartType, setChartType] = useState('line');
   const [hoveredData, setHoveredData] = useState(null);
@@ -542,9 +570,9 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
     });
     return days.map(day => {
       const dayStart = new Date(day);
-      dayStart.setHours(0, 0, 0, 0);
+      dayStart.setHours(0,0,0,0);
       const dayEnd = new Date(day);
-      dayEnd.setHours(23, 59, 59, 999);
+      dayEnd.setHours(23,59,59,999);
       const dayReservations = filteredReservations.filter(r => {
         const t = new Date(r.startTime || r.endTime);
         return t >= dayStart && t <= dayEnd;
@@ -573,7 +601,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
     return Object.entries(spaceTypes).map(([name, value]) => ({ name, value }));
   }, [reservations]);
 
-  const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'];
+  const COLORS = [colors.primary, colors.secondary, colors.accent, '#8b5cf6', '#64748b'];
 
   // Custom tooltip for reservations and revenue charts
   const CustomTooltip = ({ active, payload, label }) => {
@@ -588,7 +616,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
           fontFamily: "'Poppins', sans-serif",
           minWidth: 180
         }}>
-          <div style={{ fontWeight: 700, marginBottom: 4 }}>Date: {label}</div>
+          <div style={{ fontWeight: 700, marginBottom: 4, color: colors.primary }}>Date: {label}</div>
           <div>Reservations: {data.reservations}</div>
           <div>Revenue: {data.revenue} dh</div>
           <div style={{ marginTop: 8, fontWeight: 600 }}>Users:</div>
@@ -618,7 +646,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
           fontFamily: "'Poppins', sans-serif",
           minWidth: 180
         }}>
-          <div style={{ fontWeight: 700, marginBottom: 4 }}>{status}: {total}</div>
+          <div style={{ fontWeight: 700, marginBottom: 4, color: colors.primary }}>{status}: {total}</div>
           <div style={{ marginTop: 8, fontWeight: 600 }}>Users:</div>
           <ul style={{ margin: 0, paddingLeft: 16, fontSize: 13 }}>
             {reservationsList.map((r, i) => (
@@ -645,7 +673,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
           fontSize: '1.5rem',
           fontWeight: '700',
           margin: 0,
-          color: '#2F3542',
+          color: colors.primary,
           fontFamily: "'Poppins', sans-serif"
         }}>
           Analytics Dashboard
@@ -712,11 +740,11 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
       }}>
         {/* Reservations Per Space Pro Line Chart */}
         <motion.div
-          whileHover={{ y: -10, boxShadow: '0 16px 48px 0 rgba(16, 185, 129, 0.18)' }}
+          whileHover={{ y: -10, boxShadow: '0 16px 48px 0 rgba(30, 58, 138, 0.18)' }}
           style={{
             background: 'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(224,247,250,0.95) 100%)',
             borderRadius: '32px',
-            boxShadow: '0 8px 32px 0 rgba(16, 185, 129, 0.13)',
+            boxShadow: '0 8px 32px 0 rgba(30, 58, 138, 0.13)',
             border: '1.5px solid #e0e7ef',
             padding: '2.5rem 2.5rem 2rem 2.5rem',
             position: 'relative',
@@ -734,10 +762,11 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
             right: '-60px',
             width: '180px',
             height: '180px',
-            background: 'radial-gradient(circle at 60% 40%, #10b98133 0%, #fff0 80%)',
+            background: `radial-gradient(circle at 60% 40%, ${colors.primary}33 0%, #fff0 80%)`,
             zIndex: 0,
             pointerEvents: 'none',
           }} />
+
           <div style={{ position: 'relative', zIndex: 1 }}>
             <h4 style={{ 
               fontSize: '2rem',
@@ -745,7 +774,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
               margin: '0 0 0.5rem 0',
               fontFamily: "'Poppins', 'Inter', sans-serif",
               letterSpacing: '-1px',
-              background: 'linear-gradient(90deg, #10b981 0%, #3b82f6 100%)',
+              background: `linear-gradient(90deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -755,7 +784,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
               Reservations Per Space
             </h4>
             <div style={{
-              color: '#64748b',
+              color: colors.textSecondary,
               fontWeight: 500,
               fontSize: '1.08rem',
               marginBottom: '2.2rem',
@@ -771,25 +800,25 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
                 })).sort((a, b) => b.reservations - a.reservations).slice(0, 8)} margin={{ top: 20, right: 30, left: 10, bottom: 30 }}>
                   <defs>
                     <linearGradient id="colorResPro" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#10b981" stopOpacity={0.7}/>
-                      <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.15}/>
+                      <stop offset="0%" stopColor={colors.primary} stopOpacity={0.7}/>
+                      <stop offset="100%" stopColor={colors.secondary} stopOpacity={0.15}/>
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 6" stroke="#e0e7ef" />
-                  <XAxis dataKey="name" tick={{ fontSize: 15, fill: '#334155', fontWeight: 700 }} interval={0} angle={-18} textAnchor="end" height={60} />
-                  <YAxis tick={{ fontSize: 15, fill: '#334155', fontWeight: 700 }} allowDecimals={false} axisLine={false} />
+                  <XAxis dataKey="name" tick={{ fontSize: 15, fill: colors.primaryDark, fontWeight: 700 }} interval={0} angle={-18} textAnchor="end" height={60} />
+                  <YAxis tick={{ fontSize: 15, fill: colors.primaryDark, fontWeight: 700 }} allowDecimals={false} axisLine={false} />
                   <Tooltip 
                     formatter={(value) => [value, 'Reservations']}
-                    contentStyle={{ borderRadius: 16, fontFamily: "'Poppins', 'Inter', sans-serif", background: '#fff', border: '1.5px solid #e0e7ef', boxShadow: '0 4px 16px #10b98122' }}
-                    labelStyle={{ fontWeight: 700, color: '#10b981', fontSize: 16 }}
+                    contentStyle={{ borderRadius: 16, fontFamily: "'Poppins', 'Inter', sans-serif", background: '#fff', border: '1.5px solid #e0e7ef', boxShadow: `0 4px 16px ${colors.primary}22` }}
+                    labelStyle={{ fontWeight: 700, color: colors.primary, fontSize: 16 }}
                   />
                   <Line 
                     type="monotone" 
                     dataKey="reservations" 
-                    stroke="#10b981" 
+                    stroke={colors.primary} 
                     strokeWidth={4}
-                    dot={{ r: 8, fill: '#fff', stroke: '#10b981', strokeWidth: 4, filter: 'drop-shadow(0 0 8px #10b98188)' }}
-                    activeDot={{ r: 12, fill: '#10b981', stroke: '#3b82f6', strokeWidth: 5, filter: 'drop-shadow(0 0 12px #3b82f688)' }}
+                    dot={{ r: 8, fill: '#fff', stroke: colors.primary, strokeWidth: 4, filter: `drop-shadow(0 0 8px ${colors.primary}88)` }}
+                    activeDot={{ r: 12, fill: colors.primary, stroke: colors.secondary, strokeWidth: 5, filter: `drop-shadow(0 0 12px ${colors.secondary}88)` }}
                     fill="url(#colorResPro)"
                   />
                 </LineChart>
@@ -807,10 +836,10 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
         <motion.div
           whileHover={{ y: -5 }}
           style={{
-            background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
+            background: colors.card,
             borderRadius: '24px',
-            boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
-            border: '1px solid rgba(242, 243, 247, 0.8)',
+            boxShadow: colors.shadow,
+            border: `1px solid ${colors.border}`,
             padding: '1.5rem',
             position: 'relative',
             overflow: 'hidden',
@@ -821,7 +850,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
             fontSize: '1.1rem',
             fontWeight: '600',
             margin: '0 0 1rem 0',
-            color: '#2F3542',
+            color: colors.primary,
             fontFamily: "'Poppins', sans-serif"
           }}>
             Space Type Distribution
@@ -851,7 +880,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
                   formatter={(value) => [value, 'Bookings']}
                   labelFormatter={(label) => `Space Type: ${label}`}
                 />
-                <Bar dataKey="value" fill="#3b82f6" radius={[0, 4, 4, 0]}>
+                <Bar dataKey="value" fill={colors.primary} radius={[0, 4, 4, 0]}>
                   {spaceTypeData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
@@ -865,7 +894,7 @@ function AnalyticsDashboard({ colors, reservations, users, spaces }) {
   );
 }
 
-function AdminDashboardTab({ colors, stats, reservations, users, spaces }) {
+function AdminDashboardTab({ stats, reservations, users, spaces }) {
   // Join user and space info to each reservation
   const reservationsWithInfo = useMemo(() => {
     return reservations.map(res => {
@@ -906,8 +935,8 @@ function AdminDashboardTab({ colors, stats, reservations, users, spaces }) {
 
   return (
     <div>
-      <Stats stats={stats} colors={colors} />
-      <AnalyticsDashboard colors={colors} reservations={reservationsWithInfo} users={users} spaces={spaces} />
+      <Stats stats={stats} />
+      <AnalyticsDashboard reservations={reservationsWithInfo} users={users} spaces={spaces} />
       <div style={{ 
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -918,10 +947,10 @@ function AdminDashboardTab({ colors, stats, reservations, users, spaces }) {
         <motion.div
           whileHover={{ y: -5 }}
           style={{
-            background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
+            background: colors.card,
             borderRadius: '24px',
-            boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
-            border: '1px solid rgba(242, 243, 247, 0.8)',
+            boxShadow: colors.shadow,
+            border: `1px solid ${colors.border}`,
             padding: '2rem',
             position: 'relative',
             overflow: 'hidden'
@@ -934,7 +963,7 @@ function AdminDashboardTab({ colors, stats, reservations, users, spaces }) {
             left: 0,
             width: '6px',
             height: '100%',
-            background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+            background: `linear-gradient(to bottom, ${colors.primary} 0%, ${colors.secondary} 100%)`
           }}></div>
 
           <h3 style={{ 
@@ -942,14 +971,14 @@ function AdminDashboardTab({ colors, stats, reservations, users, spaces }) {
             fontWeight: '700',
             marginTop: 0,
             marginBottom: '1.5rem',
-            color: '#2F3542',
+            color: colors.primary,
             fontFamily: "'Poppins', sans-serif"
           }}>
             Recent Activity
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {recentReservations.length === 0 && (
-              <div style={{ color: '#A4B0BE', fontFamily: "'Poppins', sans-serif" }}>No recent reservations.</div>
+              <div style={{ color: colors.textSecondary, fontFamily: "'Poppins', sans-serif" }}>No recent reservations.</div>
             )}
             {recentReservations.map(res => (
               <div key={res.id} style={{
@@ -959,13 +988,13 @@ function AdminDashboardTab({ colors, stats, reservations, users, spaces }) {
                 padding: '1rem',
                 background: 'rgba(248, 250, 252, 0.7)',
                 borderRadius: '12px',
-                border: '1px solid rgba(242, 243, 247, 0.8)'
+                border: `1px solid ${colors.border}`
               }}>
                 <div style={{
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                  background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -976,10 +1005,10 @@ function AdminDashboardTab({ colors, stats, reservations, users, spaces }) {
                   {res.userId}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: '600', color: '#2F3542', marginBottom: '0.25rem' }}>
+                  <div style={{ fontWeight: '600', color: colors.text, marginBottom: '0.25rem' }}>
                     Reservation #{res.id}
                   </div>
-                  <div style={{ fontSize: '0.85rem', color: '#A4B0BE' }}>
+                  <div style={{ fontSize: '0.85rem', color: colors.textSecondary }}>
                     {res.status} • {formatDateTime(res.startTime || res.endTime)}
                   </div>
                 </div>
@@ -1033,31 +1062,7 @@ function AdminDashboard() {
     { name: 'Revenue', value: '$12,845', icon: '💰', change: '+18%' },
     { name: 'Occupancy Rate', value: '78%', icon: '📊', change: '+3%' }
   ]);
-  const [loading, setLoading] = useState(false);
 
-  // Modern green accent palette with enhanced colors
-  const colors = {
-    primary: '#10b981',      // Bold green
-    primaryDark: '#059669',  // Darker green
-    primaryLight: '#6ee7b7', // Light green
-    secondary: '#3b82f6',    // Blue for secondary actions
-    accent: '#f59e0b',       // Orange for accents
-    orange: '#f97316',       // A vibrant orange
-    text: '#1e293b',         // Slate
-    textSecondary: '#64748b', // Lighter text
-    lightText: '#f8fafc',    // Light
-    background: '#ffffff',   // White background
-    card: '#ffffff',         // Card background
-    border: '#e5e7eb',       // Light border
-    glass: 'rgba(255, 255, 255, 0.95)', // More opaque glass
-    glassBorder: 'rgba(255, 255, 255, 0.3)', // Glass effect border
-    shadow: '0 4px 20px rgba(16, 185, 129, 0.08)',
-    status: {
-      pending: { background: '#fffbeb', color: '#f59e0b' },
-      confirmed: { background: '#ecfdf5', color: '#10b981' },
-      cancelled: { background: '#f8fafc', color: '#64748b' },
-    },
-  };
 
   useEffect(() => {
     if (!user || !user.id) {
@@ -1089,7 +1094,7 @@ function AdminDashboard() {
   }, [users, reservations]);
 
   const fetchAdminData = async () => {
-    setLoading(true);
+
     try {
       // Fetch users
       const usersRes = await fetch('/api/users');
@@ -1120,8 +1125,6 @@ function AdminDashboard() {
       }
     } catch (error) {
       console.error('Error fetching admin data:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -1211,54 +1214,6 @@ function AdminDashboard() {
     weekday: 'long'
   });
 
-  if (loading) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          background: `linear-gradient(135deg, ${colors.background} 0%, ${colors.primaryLight}20 100%)`,
-        }}
-      >
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 5, -5, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            background: 'rgba(255, 255, 255, 0.2)',
-            backdropFilter: 'blur(10px)',
-            padding: '2rem',
-            borderRadius: '16px',
-            border: `1px solid rgba(255, 255, 255, 0.3)`,
-            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
-          }}
-        >
-          <div style={{
-            width: '60px',
-            height: '60px',
-            borderRadius: '50%',
-            border: `4px solid ${colors.primaryLight}`,
-            borderTopColor: colors.primary,
-            animation: 'spin 1s linear infinite'
-          }} />
-        </motion.div>
-      </motion.div>
-    );
-  }
-
   return (
     <div style={{
       minHeight: '100vh',
@@ -1276,7 +1231,7 @@ function AdminDashboard() {
         flexDirection: 'column',
         alignItems: 'center',
         padding: '1.5rem 0',
-        boxShadow: '4px 0 20px rgba(16, 185, 129, 0.04)',
+        boxShadow: '4px 0 20px rgba(30, 58, 138, 0.04)',
         zIndex: 2,
         backdropFilter: 'blur(10px)'
       }}>
@@ -1434,7 +1389,7 @@ function AdminDashboard() {
                 fontWeight: '600',
                 fontSize: '0.95rem',
                 cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(16,185,129,0.15)',
+                boxShadow: '0 4px 12px rgba(30,58,138,0.15)',
                 transition: 'all 0.25s cubic-bezier(.4,2,.6,1)',
                 outline: 'none'
               }}
@@ -1484,7 +1439,7 @@ function AdminDashboard() {
                       justifyContent: 'space-between',
                       background: 'linear-gradient(90deg,rgb(252, 252, 252) 0%,rgb(252, 255, 254) 100%)',
                       borderRadius: '20px',
-                      boxShadow: '0 8px 24px 0 rgba(255,167,81,0.10)',
+                      boxShadow: '0 8px 24px 0 rgba(212, 175, 55, 0.10)',
                       padding: '0rem 4rem 0rem 4rem ',
                       marginBottom: '2.5rem',
                       minHeight: '160px',
@@ -1513,7 +1468,7 @@ function AdminDashboard() {
                         right: '-10%',
                         width: '150%',
                         height: '150%',
-                        background: 'radial-gradient(circle at 70% 30%, rgba(255,228,132,0.15) 0%, rgba(255,228,132,0) 50%)',
+                        background: 'radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 50%)',
                         zIndex: 0,
                         animation: 'pulse 8s infinite alternate'
                       }}></div>
@@ -1530,7 +1485,7 @@ function AdminDashboard() {
                           display: 'flex',
                           alignItems: 'center',
                           gap: '0.75rem',
-                          background: 'linear-gradient(90deg, #FF6B6B 0%, #4ECDC4 100%)',
+                          background: `linear-gradient(90deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
                           WebkitBackgroundClip: 'text',
                           backgroundClip: 'text',
                           color: 'transparent',
@@ -1545,7 +1500,7 @@ function AdminDashboard() {
                           }}></span>
                           Welcome <span style={{ 
                             color: 'inherit',
-                            background: 'linear-gradient(90deg, #4ECDC4 0%, #FF6B6B 100%)',
+                            background: `linear-gradient(90deg, ${colors.secondary} 0%, ${colors.primary} 100%)`,
                             WebkitBackgroundClip: 'text',
                             backgroundClip: 'text'
                           }}>{user.name ? user.name.split(' ')[0] : 'Admin'}</span>!
@@ -1554,14 +1509,14 @@ function AdminDashboard() {
                         {/* Tagline - Vibrant and energetic */}
                         <div style={{
                           fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)',
-                          color: '#2F3542',
+                          color: colors.text,
                           margin: '0rem 0rem 0rem 0rem',
                           padding: '0.5rem 0rem 0rem 1.3rem',
                           fontWeight: 500,
                           maxWidth: '90%',
                           lineHeight: 1.5,
                           fontFamily: "'Poppins', sans-serif",
-                          background: 'linear-gradient(90deg, #2F3542 0%, #57606F 100%)',
+                          background: `linear-gradient(90deg, ${colors.primaryDark} 0%, ${colors.primary} 100%)`,
                           WebkitBackgroundClip: 'text',
                           backgroundClip: 'text',
                           color: 'transparent'
@@ -1601,14 +1556,13 @@ function AdminDashboard() {
                     </div>
                   </div>
 
-                  <AdminDashboardTab colors={colors} stats={stats} reservations={reservations} users={users} spaces={spaces} />
+                  <AdminDashboardTab stats={stats} reservations={reservations} users={users} spaces={spaces} />
                 </motion.div>
               )}
               
               {/* Users Tab */}
               {activeTab === 'users' && (
                 <UsersTab 
-                  colors={colors}
                   users={users}
                   onEditUser={handleEditUser}
                   onDeleteUser={handleDeleteUser}
@@ -1619,7 +1573,6 @@ function AdminDashboard() {
               {/* Bookings Tab */}
               {activeTab === 'bookings' && (
                 <BookingsManagementTab 
-                  colors={colors}
                   bookings={reservations.map(r => ({
                     ...r,
                     userName: users.find(u => u.id === r.userId)?.name || r.userId,
@@ -1641,7 +1594,7 @@ function AdminDashboard() {
                     padding: '0 1rem',
                   }}
                 >
-                  <AdminProfileCard user={user} setUser={setUser} colors={colors} />
+                  <AdminProfileCard user={user} setUser={setUser} />
                 </motion.div>
               )}
             </motion.div>
@@ -1652,9 +1605,7 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard;
-
-function AdminProfileCard({ user, setUser, colors }) {
+function AdminProfileCard({ user, setUser }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState({
     name: user.name || '',
@@ -1750,7 +1701,7 @@ function AdminProfileCard({ user, setUser, colors }) {
       style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(224,247,250,0.95) 100%)',
         borderRadius: '32px',
-        boxShadow: '0 8px 32px 0 rgba(16, 185, 129, 0.13)',
+        boxShadow: '0 8px 32px 0 rgba(30, 58, 138, 0.13)',
         border: '1.5px solid #e0e7ef',
         padding: '2.5rem 2.5rem 2rem 2.5rem',
         position: 'relative',
@@ -1769,7 +1720,7 @@ function AdminProfileCard({ user, setUser, colors }) {
           margin: '0 0 1.5rem 0',
           fontFamily: "'Poppins', 'Inter', sans-serif",
           letterSpacing: '-1px',
-          background: 'linear-gradient(90deg, #10b981 0%, #3b82f6 100%)',
+          background: `linear-gradient(90deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -1801,7 +1752,7 @@ function AdminProfileCard({ user, setUser, colors }) {
           </motion.div>
           {!isEditing ? (
             <>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: '0.5rem 0', color: colors.primaryDark }}>{editedUser.name || 'Admin'}</h3>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: '0.5rem 0', color: colors.primary }}>{editedUser.name || 'Admin'}</h3>
               <p style={{ color: colors.text, opacity: 0.8, margin: 0 }}>{editedUser.email}</p>
             </>
           ) : (
@@ -1815,7 +1766,7 @@ function AdminProfileCard({ user, setUser, colors }) {
                   width: '100%',
                   padding: '0.75rem',
                   borderRadius: '10px',
-                  border: '1px solid #e0e7ef',
+                  border: `1px solid ${colors.border}`,
                   marginBottom: '1rem',
                   fontSize: '1rem',
                   fontFamily: 'inherit',
@@ -1830,7 +1781,7 @@ function AdminProfileCard({ user, setUser, colors }) {
                   width: '100%',
                   padding: '0.75rem',
                   borderRadius: '10px',
-                  border: '1px solid #e0e7ef',
+                  border: `1px solid ${colors.border}`,
                   marginBottom: '1rem',
                   fontSize: '1rem',
                   fontFamily: 'inherit',
@@ -1870,7 +1821,7 @@ function AdminProfileCard({ user, setUser, colors }) {
                 flex: 1,
                 padding: '1rem',
                 background: isSaving 
-                  ? '#e2e8f0' 
+                  ? colors.border 
                   : `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
                 color: isSaving ? colors.text : 'white',
                 border: 'none',
@@ -1889,7 +1840,7 @@ function AdminProfileCard({ user, setUser, colors }) {
               style={{
                 flex: 1,
                 padding: '1rem',
-                background: '#e0e7ef',
+                background: colors.border,
                 color: colors.text,
                 border: 'none',
                 borderRadius: '12px',
@@ -1927,27 +1878,27 @@ function AdminProfileCard({ user, setUser, colors }) {
               Change Password
             </motion.button>
           ) : (
-            <div style={{ background: '#f8fafc', borderRadius: '12px', padding: '1.5rem', marginBottom: '1rem', border: '1px solid #e0e7ef' }}>
+            <div style={{ background: colors.background, borderRadius: '12px', padding: '1.5rem', marginBottom: '1rem', border: `1px solid ${colors.border}` }}>
               <input
                 type="password"
                 value={currentPassword}
                 onChange={e => setCurrentPassword(e.target.value)}
                 placeholder="Current Password"
-                style={{ width: '100%', padding: '0.75rem', borderRadius: '10px', border: '1px solid #e0e7ef', marginBottom: '1rem', fontSize: '1rem', fontFamily: 'inherit' }}
+                style={{ width: '100%', padding: '0.75rem', borderRadius: '10px', border: `1px solid ${colors.border}`, marginBottom: '1rem', fontSize: '1rem', fontFamily: 'inherit' }}
               />
               <input
                 type="password"
                 value={newPassword}
                 onChange={e => setNewPassword(e.target.value)}
                 placeholder="New Password"
-                style={{ width: '100%', padding: '0.75rem', borderRadius: '10px', border: '1px solid #e0e7ef', marginBottom: '1rem', fontSize: '1rem', fontFamily: 'inherit' }}
+                style={{ width: '100%', padding: '0.75rem', borderRadius: '10px', border: `1px solid ${colors.border}`, marginBottom: '1rem', fontSize: '1rem', fontFamily: 'inherit' }}
               />
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={e => setConfirmPassword(e.target.value)}
                 placeholder="Confirm New Password"
-                style={{ width: '100%', padding: '0.75rem', borderRadius: '10px', border: '1px solid #e0e7ef', marginBottom: '1rem', fontSize: '1rem', fontFamily: 'inherit' }}
+                style={{ width: '100%', padding: '0.75rem', borderRadius: '10px', border: `1px solid ${colors.border}`, marginBottom: '1rem', fontSize: '1rem', fontFamily: 'inherit' }}
               />
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 <motion.button
@@ -1958,7 +1909,7 @@ function AdminProfileCard({ user, setUser, colors }) {
                   style={{
                     flex: 1,
                     padding: '1rem',
-                    background: isPasswordSaving ? '#e2e8f0' : `linear-gradient(135deg, ${colors.secondary} 0%, ${colors.primary} 100%)`,
+                    background: isPasswordSaving ? colors.border : `linear-gradient(135deg, ${colors.secondary} 0%, ${colors.primary} 100%)`,
                     color: isPasswordSaving ? colors.text : 'white',
                     border: 'none',
                     borderRadius: '12px',
@@ -1976,7 +1927,7 @@ function AdminProfileCard({ user, setUser, colors }) {
                   style={{
                     flex: 1,
                     padding: '1rem',
-                    background: '#e0e7ef',
+                    background: colors.border,
                     color: colors.text,
                     border: 'none',
                     borderRadius: '12px',
@@ -1998,3 +1949,5 @@ function AdminProfileCard({ user, setUser, colors }) {
     </div>
   );
 }
+
+export default AdminDashboard;

@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #b6e1fa 100%);
 }
 
 
@@ -188,8 +188,8 @@
 
 .auth-input:focus {
   outline: none;
-  border-color: #3a0ca3;
-  box-shadow: 0 0 0 3px rgba(58, 12, 163, 0.1);
+  border-color: #80a2e0;
+  box-shadow: 0 0 0 3px rgba(231, 231, 240, 0.1);
   background: #ffffff;
 }
 
@@ -240,15 +240,15 @@
 }
 
 .primary {
-  background: linear-gradient(90deg, #3a0ca3, #4361ee);
+  background: linear-gradient(90deg, #0c68b3, #79b5e6);
   color: white;
-  box-shadow: 0 5px 15px rgba(58, 12, 163, 0.2);
+  box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
 }
 
 .secondary {
   background: #ffffff;
-  color: #3a0ca3;
-  border: 1px solid #3a0ca3;
+  color: #0c23a3;
+  border: 1px solid #0c4da3;
 }
 
 .auth-btn:hover {
@@ -264,7 +264,7 @@
 }
 
 .toggle-link {
-  color: #3a0ca3;
+  color: #0d4bbe;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;

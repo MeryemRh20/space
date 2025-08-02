@@ -1,29 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginPage.css";
+import "./App.css";
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle('dark-mode');
+  };
+
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
-        <span className="logo-icon" aria-label="heartbeat-logo">
-          <svg width="34" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{verticalAlign: 'middle'}}>
-            <polyline points="2,12 7,12 10,20 15,4 18,16 21,12 32,12" stroke="#21c87a" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </span>
-        <span className="logo-text">Workbeat</span>
+    <nav className={`navbar glass-nav ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <a href="/" className="navbar-brand">
+          <div className="logo-container">
+            <svg className="navbar-logo" width="32" height="32" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="2,12 7,12 10,20 15,4 18,16 21,12 32,12" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="brand-text">Workbeat</span>
+          </div>
+        </a>
+        
+        <ul className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+          <li><a href="/#hero" className="navbar-link" onClick={closeMobileMenu}>Home</a></li>
+          <li><a href="/#features" className="navbar-link" onClick={closeMobileMenu}>Features</a></li>
+          <li><a href="/#services" className="navbar-link" onClick={closeMobileMenu}>Services</a></li>
+          <li><a href="/#pricing" className="navbar-link" onClick={closeMobileMenu}>Pricing</a></li>
+          <li><a href="/#gallery" className="navbar-link" onClick={closeMobileMenu}>Spaces</a></li>
+          <li><a href="/#contact" className="navbar-link" onClick={closeMobileMenu}>Contact</a></li>
+        </ul>
+        
+        
+        <button 
+          className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <ul className="navbar-menu">
-        <li><a href="/#hero">Home</a></li>
-        <li><a href="/#about">About</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
-        <li><a href="/#gallery">Spaces</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-      <a href="/login" className="book-tour">Connect</a>
     </nav>
   );
 }
@@ -35,6 +77,7 @@ export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(false);
   const [signupMsg, setSignupMsg] = useState("");
   const [loginMsg, setLoginMsg] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const navigate = useNavigate();
 
   // Handler for checkbox toggle
@@ -45,7 +88,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="auth-app">
+    <div className={`auth-app ${isDarkMode ? 'dark-mode' : ''}`}>
+      {/* Floating Background Elements */}
+      <div className="floating-elements">
+        <div className="floating-shape shape-1"></div>
+        <div className="floating-shape shape-2"></div>
+        <div className="floating-shape shape-3"></div>
+        <div className="floating-shape shape-4"></div>
+      </div>
+      
       <Navbar />
       <main className="auth-container">
         <div className="auth-card">

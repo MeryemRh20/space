@@ -15,7 +15,7 @@ function Stats({ stats, colors }) {
       {stats && stats.map((stat, index) => (
         <motion.div 
           key={index} 
-          whileHover={{ y: -5 }}
+          whileHover={{ y: -5, boxShadow: '0 12px 24px rgba(29, 78, 216, 0.15)' }}
           style={{ 
             background: colors.card, 
             padding: '1.75rem', 
@@ -70,11 +70,11 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
           justifyContent: 'space-between', 
           alignItems: 'center', 
           marginBottom: '2.5rem',
-          background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
+          background: 'linear-gradient(to bottom, #FFFFFF 0%, #f8fafc 100%)',
           padding: '2rem',
           borderRadius: '24px',
-          boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
-          border: '1px solid rgba(242, 243, 247, 0.8)',
+          boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
+          border: '1px solid rgba(226, 232, 240, 0.8)',
           position: 'relative',
           overflow: 'hidden'
         }}>
@@ -85,7 +85,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
             left: 0,
             width: '6px',
             height: '100%',
-            background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+            background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
           }}></div>
 
           <h2 style={{ 
@@ -94,7 +94,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
             margin: 0,
             paddingLeft: '1rem',
             fontFamily: "'Poppins', sans-serif",
-            background: 'linear-gradient(90deg, #2F3542 0%, #57606F 100%)',
+            background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             color: 'transparent',
@@ -103,11 +103,11 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
             All My Bookings
           </h2>
           <motion.button
-            whileHover={{ scale: 1.05, boxShadow: '0 8px 24px rgba(255, 107, 107, 0.3)' }}
+            whileHover={{ scale: 1.05, boxShadow: '0 8px 24px rgba(59, 130, 246, 0.3)' }}
             whileTap={{ scale: 0.95 }}
             onClick={onCreateBooking}
             style={{ 
-              background: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)',
+              background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
               color: 'white', 
               border: 'none', 
               borderRadius: '14px',
@@ -118,7 +118,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.75rem',
-              boxShadow: '0 4px 16px rgba(255, 107, 107, 0.3)',
+              boxShadow: '0 4px 16px rgba(29, 78, 216, 0.3)',
               fontFamily: "'Poppins', sans-serif",
               letterSpacing: '0.5px'
             }}
@@ -136,12 +136,12 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
         {bookings && bookings.map((booking) => (
             <motion.div
               key={booking.id}
-            whileHover={{ y: -8, boxShadow: '0 12px 24px rgba(255, 107, 107, 0.15)' }}
+            whileHover={{ y: -8, boxShadow: '0 12px 24px rgba(29, 78, 216, 0.15)' }}
               style={{ 
-              background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
+              background: 'linear-gradient(to bottom, #FFFFFF 0%, #f8fafc 100%)',
               borderRadius: '24px',
-              boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
-              border: '1px solid rgba(242, 243, 247, 0.8)',
+              boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
+              border: '1px solid rgba(226, 232, 240, 0.8)',
               padding: '2rem',
               position: 'relative',
               overflow: 'hidden',
@@ -155,7 +155,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
               left: 0,
               width: '6px',
               height: '100%',
-              background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+              background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
             }}></div>
 
               <div style={{
@@ -174,7 +174,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
                   width: '48px',
                   height: '48px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                  background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -187,14 +187,14 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
                   <div style={{ 
                   fontWeight: '700',
                     fontSize: '1.2rem',
-                    color: '#2F3542',
+                    color: colors.text,
                     fontFamily: "'Poppins', sans-serif",
                     marginBottom: '0.25rem'
                   }}>
                     {formatDateTime(booking.date)}
                   </div>
                   <div style={{ 
-                    color: '#A4B0BE',
+                    color: colors.textSecondary,
                     fontSize: '0.95rem',
                     fontWeight: '500',
                     fontFamily: "'Poppins', sans-serif"
@@ -205,10 +205,10 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
               </div>
                 <div style={{
                 background: booking.status === 'PENDING' 
-                  ? 'linear-gradient(135deg, #FFD166 0%, #F9A826 100%)'
+                  ? 'linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%)'
                   : booking.status === 'CONFIRMED'
-                  ? 'linear-gradient(135deg, #4ECDC4 0%, #2ECC71 100%)'
-                  : 'linear-gradient(135deg, #FF6B6B 0%, #FF4757 100%)',
+                  ? 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)'
+                  : 'linear-gradient(135deg, #64748b 0%, #475569 100%)',
                 color: 'white',
                 padding: '0.5rem 1rem',
                 borderRadius: '20px',
@@ -231,7 +231,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
               }}>
                 <div>
                   <div style={{ 
-                  color: '#A4B0BE',
+                  color: colors.textSecondary,
                     fontSize: '0.85rem',
                   marginBottom: '0.35rem',
                   fontWeight: '500',
@@ -240,7 +240,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
                   Price
                   </div>
                   <div style={{ 
-                  color: '#2F3542',
+                  color: colors.text,
                   fontWeight: '700',
                   fontFamily: "'Poppins', sans-serif",
                   fontSize: '1.1rem',
@@ -248,7 +248,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
                   alignItems: 'center',
                   gap: '0.25rem'
                 }}>
-                  <span style={{ color: '#4ECDC4' }}>$</span>
+                  <span style={{ color: '#3b82f6' }}>$</span>
                   {booking.price || '0'}
                   </div>
                 </div>
@@ -260,12 +260,12 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
               paddingLeft: '1rem'
             }}>
               <motion.button
-                whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(100, 210, 255, 0.3)' }}
+                whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(59, 130, 246, 0.3)' }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate(`/edit-booking/${booking.id}`)}
                 style={{ 
                   flex: 1,
-                  background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
                   color: 'white',
                   border: 'none',
                   borderRadius: '14px',
@@ -273,7 +273,7 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
                   fontWeight: '700',
                   cursor: 'pointer',
                   fontSize: '1rem',
-                  boxShadow: '0 4px 14px rgba(78, 205, 196, 0.3)',
+                  boxShadow: '0 4px 14px rgba(59, 130, 246, 0.3)',
                   fontFamily: "'Poppins', sans-serif",
                   letterSpacing: '0.5px',
                   display: 'flex',
@@ -294,8 +294,8 @@ function BookingsTab({ colors, bookings, onCreateBooking, onCancelBooking, isDas
                   style={{ 
                     flex: 1,
                     background: 'transparent',
-                    color: '#FF6B6B',
-                    border: '2px solid #FF6B6B',
+                    color: '#3b82f6',
+                    border: '2px solid #3b82f6',
                     borderRadius: '14px',
                     padding: '0.85rem',
                     fontWeight: '700',
@@ -336,12 +336,12 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
         {dashboardData.upcomingBookings && dashboardData.upcomingBookings.map((booking) => (
           <motion.div
             key={booking.id}
-            whileHover={{ y: -8, boxShadow: '0 12px 24px rgba(255, 107, 107, 0.15)' }}
+            whileHover={{ y: -8, boxShadow: '0 12px 24px rgba(29, 78, 216, 0.15)' }}
             style={{ 
-              background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
+              background: 'linear-gradient(to bottom, #FFFFFF 0%, #f8fafc 100%)',
               borderRadius: '24px',
-              boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
-              border: '1px solid rgba(242, 243, 247, 0.8)',
+              boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
+              border: '1px solid rgba(226, 232, 240, 0.8)',
               padding: '2rem',
               position: 'relative',
               overflow: 'hidden',
@@ -355,7 +355,7 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
               left: 0,
               width: '6px',
               height: '100%',
-              background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+              background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
             }}></div>
 
             <div style={{
@@ -374,7 +374,7 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
                   width: '48px',
                   height: '48px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                  background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -387,14 +387,14 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
                   <div style={{ 
                     fontWeight: '700',
                     fontSize: '1.2rem',
-                    color: '#2F3542',
+                    color: colors.text,
                     fontFamily: "'Poppins', sans-serif",
                     marginBottom: '0.25rem'
                   }}>
                     {booking.spaceName}
                   </div>
                   <div style={{ 
-                    color: '#A4B0BE',
+                    color: colors.textSecondary,
                     fontSize: '0.95rem',
                     fontWeight: '500',
                     fontFamily: "'Poppins', sans-serif"
@@ -405,10 +405,10 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
               </div>
               <div style={{
                 background: booking.status === 'PENDING' 
-                  ? 'linear-gradient(135deg, #FFD166 0%, #F9A826 100%)'
+                  ? 'linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%)'
                   : booking.status === 'CONFIRMED'
-                  ? 'linear-gradient(135deg, #4ECDC4 0%, #2ECC71 100%)'
-                  : 'linear-gradient(135deg, #FF6B6B 0%, #FF4757 100%)',
+                  ? 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)'
+                  : 'linear-gradient(135deg, #64748b 0%, #475569 100%)',
                 color: 'white',
                 padding: '0.5rem 1rem',
                 borderRadius: '20px',
@@ -431,7 +431,7 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
             }}>
               <div>
                 <div style={{
-                  color: '#A4B0BE',
+                  color: colors.textSecondary,
                   fontSize: '0.85rem',
                   marginBottom: '0.35rem',
                   fontWeight: '500',
@@ -440,7 +440,7 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
                   Start Time
                 </div>
                 <div style={{
-                  color: '#2F3542',
+                  color: colors.text,
                   fontWeight: '600',
                   fontFamily: "'Poppins', sans-serif",
                   fontSize: '1rem'
@@ -450,7 +450,7 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
               </div>
               <div>
                 <div style={{
-                  color: '#A4B0BE',
+                  color: colors.textSecondary,
                   fontSize: '0.85rem',
                   marginBottom: '0.35rem',
                   fontWeight: '500',
@@ -459,7 +459,7 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
                   End Time
                 </div>
                 <div style={{
-                  color: '#2F3542',
+                  color: colors.text,
                   fontWeight: '600',
                   fontFamily: "'Poppins', sans-serif",
                   fontSize: '1rem'
@@ -475,12 +475,12 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
               paddingLeft: '1rem'
             }}>
               <motion.button
-                whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(100, 210, 255, 0.3)' }}
+                whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(59, 130, 246, 0.3)' }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate(`/edit-booking/${booking.id}`)}
                 style={{
                   flex: 1,
-                  background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                  background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                   color: 'white',
                   border: 'none',
                   borderRadius: '14px',
@@ -488,7 +488,7 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
                   fontWeight: '700',
                   cursor: 'pointer',
                   fontSize: '1rem',
-                  boxShadow: '0 4px 14px rgba(78, 205, 196, 0.3)',
+                  boxShadow: '0 4px 14px rgba(29, 78, 216, 0.3)',
                   fontFamily: "'Poppins', sans-serif",
                   letterSpacing: '0.5px',
                   display: 'flex',
@@ -509,8 +509,8 @@ function DashboardTab({ colors, stats, bookings, onCreateBooking, onCancelBookin
                   style={{
                     flex: 1,
                     background: 'transparent',
-                    color: '#FF6B6B',
-                    border: '2px solid #FF6B6B',
+                    color: '#1d4ed8',
+                    border: '2px solid #1d4ed8',
                     borderRadius: '14px',
                     padding: '0.85rem',
                     fontWeight: '700',
@@ -562,13 +562,13 @@ const formatDateTime = (isoString) => {
 const getStatusColor = (status) => {
   switch(status?.toLowerCase()) {
     case 'confirmed':
-      return '#4ECDC4';
+      return '#3b82f6';
     case 'pending':
-      return '#FFD166';
+      return '#93c5fd';
     case 'cancelled':
-      return '#FF6B6B';
+      return '#64748b';
     default:
-      return '#A4B0BE';
+      return '#cbd5e1';
   }
 };
 
@@ -590,28 +590,27 @@ function UserDashboard() {
     communityPosts: []
   });
   const [spaces, setSpaces] = useState([]);
-  const [loading, setLoading] = useState(false);
 
-  // Modern green accent palette with enhanced colors
+
+  // Blue color palette
   const colors = {
-    primary: '#10b981',      // Bold green
-    primaryDark: '#059669',  // Darker green
-    primaryLight: '#6ee7b7', // Light green
-    secondary: '#3b82f6',    // Blue for secondary actions
-    accent: '#f59e0b',       // Orange for accents
-    orange: '#f97316',       // A vibrant orange
-    text: '#1e293b',         // Slate
-    textSecondary: '#64748b', // Lighter text
-    lightText: '#f8fafc',    // Light
-    background: '#ffffff',   // White background
-    card: '#ffffff',         // Card background
-    border: '#e5e7eb',       // Light border
-    glass: 'rgba(255, 255, 255, 0.95)', // More opaque glass
-    glassBorder: 'rgba(255, 255, 255, 0.3)', // Glass effect border
-    shadow: '0 4px 20px rgba(16, 185, 129, 0.08)',
+    primary: '#3b82f6',      // Blue-500
+    primaryDark: '#1d4ed8',  // Blue-700
+    primaryLight: '#93c5fd', // Blue-300
+    secondary: '#64748b',    // Slate-500
+    accent: '#3b82f6',       // Blue-500
+    text: '#1e293b',         // Slate-800
+    textSecondary: '#64748b', // Slate-500
+    lightText: '#f8fafc',    // Slate-50
+    background: '#ffffff',   // White
+    card: '#ffffff',         // White
+    border: '#e2e8f0',       // Slate-200
+    glass: 'rgba(255, 255, 255, 0.95)', // Glass effect
+    glassBorder: 'rgba(255, 255, 255, 0.3)', // Glass border
+    shadow: '0 4px 20px rgba(29, 78, 216, 0.08)', // Blue-tinted shadow
     status: {
-      pending: { background: '#fffbeb', color: '#f59e0b' },
-      confirmed: { background: '#ecfdf5', color: '#10b981' },
+      pending: { background: '#dbeafe', color: '#1d4ed8' },
+      confirmed: { background: '#dbeafe', color: '#1d4ed8' },
       cancelled: { background: '#f8fafc', color: '#64748b' },
     },
   };
@@ -631,7 +630,7 @@ function UserDashboard() {
 
   const fetchDashboardData = useCallback(async () => {
     if (!user || !user.id) return;
-    setLoading(true);
+    
     try {
       // Ensure user.id is treated as a number
       const userId = parseInt(user.id);
@@ -717,7 +716,7 @@ function UserDashboard() {
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
     } finally {
-      setLoading(false);
+      
     }
   }, [user]);
 
@@ -829,54 +828,7 @@ function UserDashboard() {
     navigate('/login');
   };
 
-  if (loading) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          background: `linear-gradient(135deg, ${colors.background} 0%, ${colors.primaryLight}20 100%)`,
-        }}
-      >
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 5, -5, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            background: 'rgba(255, 255, 255, 0.2)',
-            backdropFilter: 'blur(10px)',
-            padding: '2rem',
-            borderRadius: '16px',
-            border: `1px solid rgba(255, 255, 255, 0.3)`,
-            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
-          }}
-        >
-          <div style={{
-            width: '60px',
-            height: '60px',
-            borderRadius: '50%',
-            border: `4px solid ${colors.primaryLight}`,
-            
-            borderTopColor: colors.primary,
-            animation: 'spin 1s linear infinite'
-          }} />
-        </motion.div>
-      </motion.div>
-    );
-  }
+
 
   return (
     <div style={{
@@ -895,7 +847,7 @@ function UserDashboard() {
         flexDirection: 'column',
         alignItems: 'center',
         padding: '1.5rem 0',
-        boxShadow: '4px 0 20px rgba(16, 185, 129, 0.04)',
+        boxShadow: '4px 0 20px rgba(29, 78, 216, 0.04)',
         zIndex: 2,
         backdropFilter: 'blur(10px)'
       }}>
@@ -1054,7 +1006,7 @@ function UserDashboard() {
                 fontWeight: '600',
                 fontSize: '0.95rem',
                 cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(16,185,129,0.15)',
+                boxShadow: '0 4px 12px rgba(29, 78, 216, 0.15)',
                 transition: 'all 0.25s cubic-bezier(.4,2,.6,1)',
                 outline: 'none'
               }}
@@ -1104,7 +1056,7 @@ function UserDashboard() {
                       justifyContent: 'space-between',
                       background: 'linear-gradient(90deg,rgb(252, 252, 252) 0%,rgb(252, 255, 254) 100%)',
                       borderRadius: '20px',
-                      boxShadow: '0 8px 24px 0 rgba(255,167,81,0.10)',
+                      boxShadow: '0 8px 24px 0 rgba(29, 78, 216, 0.10)',
                       padding: '0rem 4rem 0rem 4rem ',
                       marginBottom: '2.5rem',
                       minHeight: '160px',
@@ -1133,7 +1085,7 @@ function UserDashboard() {
     right: '-10%',
     width: '150%',
     height: '150%',
-    background: 'radial-gradient(circle at 70% 30%, rgba(255,228,132,0.15) 0%, rgba(255,228,132,0) 50%)',
+    background: 'radial-gradient(circle at 70% 30%, rgba(191, 219, 254, 0.15) 0%, rgba(191, 219, 254, 0) 50%)',
     zIndex: 0,
     animation: 'pulse 8s infinite alternate'
   }}></div>
@@ -1150,7 +1102,7 @@ function UserDashboard() {
                     display: 'flex',
                     alignItems: 'center',
       gap: '0.75rem',
-      background: 'linear-gradient(90deg, #FF6B6B 0%, #4ECDC4 100%)',
+      background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)',
       WebkitBackgroundClip: 'text',
       backgroundClip: 'text',
       color: 'transparent',
@@ -1163,9 +1115,9 @@ function UserDashboard() {
         fontSize: '1.3em',
         animation: 'waving 2s infinite'
       }}></span>
-      Hey <span style={{ 
+      Hey<span style={{ 
         color: 'inherit',
-        background: 'linear-gradient(90deg, #4ECDC4 0%, #FF6B6B 100%)',
+        background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)',
         WebkitBackgroundClip: 'text',
         backgroundClip: 'text'
       }}>{user.name ? user.name.split(' ')[0] : 'User'}</span>!
@@ -1174,14 +1126,14 @@ function UserDashboard() {
     {/* Tagline - Vibrant and energetic */}
     <div style={{
       fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)',
-      color: '#2F3542',
+      color: colors.text,
       margin: '0rem 0rem 0rem 0rem',
       padding: '0.9rem 0rem 0rem 0rem',
       fontWeight: 500,
       maxWidth: '90%',
       lineHeight: 1.5,
       fontFamily: "'Poppins', sans-serif",
-      background: 'linear-gradient(90deg, #2F3542 0%, #57606F 100%)',
+      background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)',
       WebkitBackgroundClip: 'text',
       backgroundClip: 'text',
       color: 'transparent'
@@ -1200,7 +1152,7 @@ function UserDashboard() {
     }}>
       <button
                         style={{
-          background: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)',
+          background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                           color: 'white',
                           border: 'none',
           padding: '1rem 2.2rem',
@@ -1212,7 +1164,7 @@ function UserDashboard() {
                           alignItems: 'center',
           gap: '0.75rem',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          boxShadow: '0 4px 20px rgba(255, 107, 107, 0.3)',
+          boxShadow: '0 4px 20px rgba(29, 78, 216, 0.3)',
           fontFamily: "'Poppins', sans-serif",
           letterSpacing: '0.5px',
           textTransform: 'uppercase',
@@ -1221,11 +1173,11 @@ function UserDashboard() {
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'translateY(-3px)';
-          e.currentTarget.style.boxShadow = '0 6px 25px rgba(255, 107, 107, 0.4)';
+          e.currentTarget.style.boxShadow = '0 6px 25px rgba(29, 78, 216, 0.4)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = '0 4px 20px rgba(255, 107, 107, 0.3)';
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(29, 78, 216, 0.3)';
         }}
         onClick={() => navigate('/book-space')}
       >
@@ -1271,7 +1223,7 @@ function UserDashboard() {
                       <img
                         src={pici}
                         alt="Welcome illustration"
-                        style={{ width: '400px', height: 'auto', borderRadius: '12px' }}
+                        style={{ width: '400px', height: 'auto', borderRadius: '5px' }}
                       />
                     </div>
                   </div>
@@ -1298,7 +1250,7 @@ function UserDashboard() {
   minWidth: '320px',
   background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
   borderRadius: '24px',
-  boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
+  boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
   border: '1px solid rgba(242, 243, 247, 0.8)',
   padding: '2rem',
   marginBottom: '2rem',
@@ -1315,7 +1267,7 @@ function UserDashboard() {
     left: 0,
     width: '6px',
     height: '100%',
-    background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+    background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
   }}></div>
 
   <div style={{
@@ -1326,13 +1278,13 @@ function UserDashboard() {
     paddingLeft: '0.5rem'
   }}>
     <h3 style={{
-      color: '#2F3542',
+      color: colors.text,
       fontSize: '1.6rem',
       fontWeight: '800',
       margin: 0,
       fontFamily: "'Poppins', sans-serif",
       letterSpacing: '-0.5px',
-      background: 'linear-gradient(90deg, #2F3542 0%, #57606F 100%)',
+      background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)',
       WebkitBackgroundClip: 'text',
       backgroundClip: 'text',
       color: 'transparent'
@@ -1350,7 +1302,7 @@ function UserDashboard() {
                         {dashboardData.upcomingBookings.map((booking) => (
                           <motion.div 
                             key={booking.id} 
-          whileHover={{ y: -8, boxShadow: '0 12px 24px rgba(255, 107, 107, 0.15)' }}
+          whileHover={{ y: -8, boxShadow: '0 12px 24px rgba(29, 78, 216, 0.15)' }}
                             style={{ 
             background: 'white',
             borderRadius: '18px',
@@ -1372,14 +1324,14 @@ function UserDashboard() {
                                 <div style={{ 
                 fontWeight: '700',
                 fontSize: '1.2rem',
-                color: '#2F3542',
+                color: colors.text,
                 fontFamily: "'Poppins', sans-serif",
                 marginBottom: '0.25rem'
                                 }}>
                                   {booking.spaceName}
                                 </div>
                                 <div style={{ 
-                color: '#A4B0BE',
+                color: colors.textSecondary,
                 fontSize: '0.95rem',
                 fontWeight: '500',
                 fontFamily: "'Poppins', sans-serif",
@@ -1409,7 +1361,7 @@ function UserDashboard() {
                             }}>
                               <div>
                                 <div style={{ 
-                color: '#A4B0BE',
+                color: colors.textSecondary,
                                   fontSize: '0.85rem',
                 marginBottom: '0.35rem',
                 fontWeight: '500',
@@ -1418,7 +1370,7 @@ function UserDashboard() {
                                   Date & Time
                                 </div>
                                 <div style={{ 
-                color: '#2F3542',
+                color: colors.text,
                 fontWeight: '600',
                 fontFamily: "'Poppins', sans-serif",
                 fontSize: '1rem'
@@ -1437,12 +1389,12 @@ function UserDashboard() {
             gap: '1rem',
                             }}>
                               <motion.button
-              whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(100, 210, 255, 0.3)' }}
+              whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(59, 130, 246, 0.3)' }}
                                 whileTap={{ scale: 0.97 }}
                                 onClick={() => navigate(`/edit-booking/${booking.id}`)}
                                 style={{ 
                                   flex: 1,
-                background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                                   color: 'white', 
                                   border: 'none', 
                 borderRadius: '14px',
@@ -1450,7 +1402,7 @@ function UserDashboard() {
                 fontWeight: '700',
                                   cursor: 'pointer',
                 fontSize: '1rem',
-                boxShadow: '0 4px 14px rgba(78, 205, 196, 0.3)',
+                boxShadow: '0 4px 14px rgba(29, 78, 216, 0.3)',
                 fontFamily: "'Poppins', sans-serif",
                 letterSpacing: '0.5px',
                 position: 'relative',
@@ -1468,8 +1420,8 @@ function UserDashboard() {
                                   style={{ 
                                     flex: 1,
                                     background: 'transparent', 
-                  color: '#FF6B6B',
-                                      border: '2px solid #FF6B6B',
+                  color: '#1d4ed8',
+                                      border: '2px solid #1d4ed8',
                   borderRadius: '14px',
                   padding: '0.85rem',
                   fontWeight: '700',
@@ -1515,7 +1467,7 @@ function UserDashboard() {
         style={{
           fontSize: '1.3rem',
           fontWeight: '700',
-          color: '#2F3542',
+          color: colors.text,
           marginBottom: '0.75rem',
           fontFamily: "'Poppins', sans-serif",
         }}
@@ -1524,7 +1476,7 @@ function UserDashboard() {
                         </h4>
       <p
         style={{
-          color: '#A4B0BE',
+          color: colors.textSecondary,
           marginBottom: '1.75rem',
           fontFamily: "'Poppins', sans-serif",
           fontSize: '1rem'
@@ -1533,11 +1485,11 @@ function UserDashboard() {
         Ready to book your perfect workspace?
                         </p>
                         <motion.button
-        whileHover={{ scale: 1.05, boxShadow: '0 8px 24px rgba(255, 107, 107, 0.3)' }}
+        whileHover={{ scale: 1.05, boxShadow: '0 8px 24px rgba(29, 78, 216, 0.3)' }}
                           whileTap={{ scale: 0.95 }}
                           onClick={handleCreateBooking}
                           style={{
-          background: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)',
+          background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                             color: 'white',
                             border: 'none',
           borderRadius: '14px',
@@ -1548,7 +1500,7 @@ function UserDashboard() {
                             display: 'inline-flex',
                             alignItems: 'center',
           gap: '0.75rem',
-          boxShadow: '0 4px 16px rgba(255, 107, 107, 0.3)',
+          boxShadow: '0 4px 16px rgba(29, 78, 216, 0.3)',
           fontFamily: "'Poppins', sans-serif",
           letterSpacing: '0.5px'
         }}
@@ -1565,7 +1517,7 @@ function UserDashboard() {
                         minWidth: '320px',
                       background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
                       borderRadius: '24px',
-                      boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
+                      boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
                       border: '1px solid rgba(242, 243, 247, 0.8)',
                         padding: '2rem',
                         marginBottom: '2rem',
@@ -1582,7 +1534,7 @@ function UserDashboard() {
                         left: 0,
                         width: '6px',
                         height: '100%',
-                        background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+                        background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
                       }}></div>
 
                       <div style={{
@@ -1593,13 +1545,13 @@ function UserDashboard() {
                         paddingLeft: '0.5rem'
                       }}>
                         <h3 style={{
-                          color: '#2F3542',
+                          color: colors.text,
                           fontSize: '1.6rem',
                           fontWeight: '800',
                           margin: 0,
                           fontFamily: "'Poppins', sans-serif",
                           letterSpacing: '-0.5px',
-                          background: 'linear-gradient(90deg, #2F3542 0%, #57606F 100%)',
+                          background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)',
                           WebkitBackgroundClip: 'text',
                           backgroundClip: 'text',
                           color: 'transparent'
@@ -1632,7 +1584,7 @@ function UserDashboard() {
                                 width: '40px',
                                 height: '40px',
                                 borderRadius: '50%',
-                                background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                                background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -1647,14 +1599,14 @@ function UserDashboard() {
                                 <div style={{
                                   fontWeight: '700',
                                   fontSize: '1rem',
-                                  color: '#2F3542',
+                                  color: colors.text,
                                   fontFamily: "'Poppins', sans-serif"
                                 }}>
                                   {post.authorName}
                                 </div>
                                 <div style={{
                                   fontSize: '0.85rem',
-                                  color: '#A4B0BE',
+                                  color: colors.textSecondary,
                                   fontFamily: "'Poppins', sans-serif"
                                 }}>
                                   {post.timestamp}
@@ -1662,7 +1614,7 @@ function UserDashboard() {
                               </div>
                             </div>
                             <div style={{
-                              color: '#2F3542',
+                              color: colors.text,
                               fontSize: '0.95rem',
                               lineHeight: '1.5',
                               fontFamily: "'Poppins', sans-serif"
@@ -1675,19 +1627,19 @@ function UserDashboard() {
                         <div style={{
                           textAlign: 'center',
                           padding: '2rem',
-                          color: '#A4B0BE',
+                          color: colors.textSecondary,
                           fontFamily: "'Poppins', sans-serif"
                         }}>
                           No community posts yet.
                         </div>
                       )}
                       <motion.button
-                        whileHover={{ scale: 1.05, boxShadow: '0 6px 16px rgba(100, 210, 255, 0.3)' }}
+                        whileHover={{ scale: 1.05, boxShadow: '0 6px 16px rgba(59, 130, 246, 0.3)' }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setActiveTab('community')}
                         style={{
                           marginTop: 'auto',
-                          background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                          background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                           color: 'white',
                           border: 'none',
                           borderRadius: '14px',
@@ -1695,7 +1647,7 @@ function UserDashboard() {
                           fontWeight: '700',
                           cursor: 'pointer',
                           fontSize: '1rem',
-                          boxShadow: '0 4px 14px rgba(78, 205, 196, 0.3)',
+                          boxShadow: '0 4px 14px rgba(29, 78, 216, 0.3)',
                           fontFamily: "'Poppins', sans-serif",
                           letterSpacing: '0.5px'
                         }}
@@ -1713,7 +1665,7 @@ function UserDashboard() {
                   <div style={{ 
                     background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
                     borderRadius: '24px',
-                    boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
+                    boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
                     border: '1px solid rgba(242, 243, 247, 0.8)',
                     padding: '2rem',
                     marginBottom: '2.5rem',
@@ -1727,7 +1679,7 @@ function UserDashboard() {
                       left: 0,
                       width: '6px',
                       height: '100%',
-                      background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+                      background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
                     }}></div>
 
                     <h2 style={{ 
@@ -1736,7 +1688,7 @@ function UserDashboard() {
                       margin: 0,
                       paddingLeft: '1rem',
                       fontFamily: "'Poppins', sans-serif",
-                      background: 'linear-gradient(90deg, #2F3542 0%, #57606F 100%)',
+                      background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)',
                       WebkitBackgroundClip: 'text',
                       backgroundClip: 'text',
                       color: 'transparent',
@@ -1751,11 +1703,11 @@ function UserDashboard() {
                     dashboardData.upcomingBookings.map((booking) => (
                         <motion.div
                           key={booking.id}
-                          whileHover={{ y: -8, boxShadow: '0 12px 24px rgba(255, 107, 107, 0.15)' }}
+                          whileHover={{ y: -8, boxShadow: '0 12px 24px rgba(29, 78, 216, 0.15)' }}
                           style={{ 
                             background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
                             borderRadius: '24px',
-                            boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
+                            boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
                             border: '1px solid rgba(242, 243, 247, 0.8)',
                             padding: '2rem',
                             position: 'relative',
@@ -1770,7 +1722,7 @@ function UserDashboard() {
                             left: 0,
                             width: '6px',
                             height: '100%',
-                            background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+                            background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
                           }}></div>
 
                           <div style={{
@@ -1789,7 +1741,7 @@ function UserDashboard() {
                                 width: '48px',
                                 height: '48px',
                                 borderRadius: '50%',
-                                background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                                background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -1802,14 +1754,14 @@ function UserDashboard() {
                                 <div style={{ 
                                   fontWeight: '700',
                                   fontSize: '1.2rem',
-                                  color: '#2F3542',
+                                  color: colors.text,
                                   fontFamily: "'Poppins', sans-serif",
                                   marginBottom: '0.25rem'
                                 }}>
                                   {booking.spaceName}
                                 </div>
                                 <div style={{ 
-                                  color: '#A4B0BE',
+                                  color: colors.textSecondary,
                                   fontSize: '0.95rem',
                                   fontWeight: '500',
                                   fontFamily: "'Poppins', sans-serif"
@@ -1820,10 +1772,10 @@ function UserDashboard() {
                             </div>
                             <div style={{
                               background: booking.status === 'PENDING' 
-                                ? 'linear-gradient(135deg, #FFD166 0%, #F9A826 100%)'
+                                ? 'linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%)'
                                 : booking.status === 'CONFIRMED'
-                                ? 'linear-gradient(135deg, #4ECDC4 0%, #2ECC71 100%)'
-                                : 'linear-gradient(135deg, #FF6B6B 0%, #FF4757 100%)',
+                                ? 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)'
+                                : 'linear-gradient(135deg, #64748b 0%, #475569 100%)',
                               color: 'white',
                               padding: '0.5rem 1rem',
                               borderRadius: '20px',
@@ -1846,7 +1798,7 @@ function UserDashboard() {
                           }}>
                             <div>
                               <div style={{
-                                color: '#A4B0BE',
+                                color: colors.textSecondary,
                                 fontSize: '0.85rem',
                                 marginBottom: '0.35rem',
                                 fontWeight: '500',
@@ -1855,7 +1807,7 @@ function UserDashboard() {
                                 Start Time
                               </div>
                               <div style={{
-                                color: '#2F3542',
+                                color: colors.text,
                                 fontWeight: '600',
                                 fontFamily: "'Poppins', sans-serif",
                                 fontSize: '1rem'
@@ -1865,7 +1817,7 @@ function UserDashboard() {
                             </div>
                             <div>
                               <div style={{
-                                color: '#A4B0BE',
+                                color: colors.textSecondary,
                                 fontSize: '0.85rem',
                                 marginBottom: '0.35rem',
                                 fontWeight: '500',
@@ -1874,7 +1826,7 @@ function UserDashboard() {
                                 End Time
                               </div>
                               <div style={{
-                                color: '#2F3542',
+                                color: colors.text,
                                 fontWeight: '600',
                                 fontFamily: "'Poppins', sans-serif",
                                 fontSize: '1rem'
@@ -1890,12 +1842,12 @@ function UserDashboard() {
                             paddingLeft: '1rem'
                           }}>
                             <motion.button
-                              whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(100, 210, 255, 0.3)' }}
+                              whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(59, 130, 246, 0.3)' }}
                               whileTap={{ scale: 0.97 }}
                               onClick={() => navigate(`/edit-booking/${booking.id}`)}
                               style={{
                                 flex: 1,
-                                background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                                background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                                 color: 'white',
                                 border: 'none',
                                 borderRadius: '14px',
@@ -1903,7 +1855,7 @@ function UserDashboard() {
                                 fontWeight: '700',
                                 cursor: 'pointer',
                                 fontSize: '1rem',
-                                boxShadow: '0 4px 14px rgba(78, 205, 196, 0.3)',
+                                boxShadow: '0 4px 14px rgba(29, 78, 216, 0.3)',
                                 fontFamily: "'Poppins', sans-serif",
                                 letterSpacing: '0.5px',
                                 display: 'flex',
@@ -1924,8 +1876,8 @@ function UserDashboard() {
                                 style={{
                                   flex: 1,
                                   background: 'transparent',
-                                  color: '#FF6B6B',
-                                  border: '2px solid #FF6B6B',
+                                  color: '#1d4ed8',
+                                  border: '2px solid #1d4ed8',
                                   borderRadius: '14px',
                                   padding: '0.85rem',
                                   fontWeight: '700',
@@ -1975,7 +1927,7 @@ function UserDashboard() {
                           style={{
                             fontSize: '1.3rem',
                             fontWeight: '700',
-                            color: '#2F3542',
+                            color: colors.text,
                             marginBottom: '0.75rem',
                             fontFamily: "'Poppins', sans-serif",
                           }}
@@ -1984,7 +1936,7 @@ function UserDashboard() {
                         </h4>
                         <p
                           style={{
-                            color: '#A4B0BE',
+                            color: colors.textSecondary,
                             marginBottom: '1.75rem',
                             fontFamily: "'Poppins', sans-serif",
                             fontSize: '1rem'
@@ -2004,7 +1956,6 @@ function UserDashboard() {
                   colors={colors}
                   posts={dashboardData.communityPosts}
                   onCreatePost={handleCreatePost}
-                  isLoading={loading}
                 />
               )}
               
@@ -2212,7 +2163,7 @@ function SpacesTab({ colors, spaces, onBookNow }) {
   );
 }
 
-function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) {
+function CommunityTab({ colors, posts: initialPosts, onCreatePost }) {
   const [posts, setPosts] = useState(initialPosts);
   const [newPostContent, setNewPostContent] = useState('');
 
@@ -2247,7 +2198,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
       <div style={{ 
         background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
         borderRadius: '24px',
-        boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
+        boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
         border: '1px solid rgba(242, 243, 247, 0.8)',
         padding: '2rem',
         marginBottom: '2.5rem',
@@ -2261,7 +2212,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
           left: 0,
           width: '6px',
           height: '100%',
-          background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+          background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
         }}></div>
 
         <h2 style={{ 
@@ -2270,7 +2221,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
           margin: 0,
           paddingLeft: '1rem',
           fontFamily: "'Poppins', sans-serif",
-          background: 'linear-gradient(90deg, #2F3542 0%, #57606F 100%)',
+          background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)',
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
           color: 'transparent',
@@ -2284,7 +2235,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
       <div style={{
         background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
         borderRadius: '24px',
-        boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
+        boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
         border: '1px solid rgba(242, 243, 247, 0.8)',
           padding: '2rem',
         marginBottom: '2.5rem',
@@ -2298,7 +2249,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
           left: 0,
           width: '6px',
           height: '100%',
-          background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+          background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
         }}></div>
         
         <textarea
@@ -2316,7 +2267,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
             fontSize: '1rem',
             resize: 'vertical',
             marginBottom: '1.5rem',
-            color: '#2F3542',
+            color: colors.text,
             outline: 'none',
             transition: 'all 0.3s ease'
           }}
@@ -2328,7 +2279,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
           gap: '1rem'
         }}>
           <motion.button
-            whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(100, 210, 255, 0.3)' }}
+            whileHover={{ scale: 1.03, boxShadow: '0 6px 16px rgba(59, 130, 246, 0.3)' }}
             whileTap={{ scale: 0.97 }}
             onClick={() => {
               if (newPostContent.trim()) {
@@ -2338,7 +2289,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
             }}
             disabled={!newPostContent.trim()}
             style={{
-              background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+              background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
               color: 'white',
               border: 'none',
               borderRadius: '14px',
@@ -2347,7 +2298,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
               cursor: newPostContent.trim() ? 'pointer' : 'not-allowed',
               fontSize: '1rem',
               opacity: newPostContent.trim() ? 1 : 0.7,
-              boxShadow: '0 4px 14px rgba(78, 205, 196, 0.3)',
+              boxShadow: '0 4px 14px rgba(29, 78, 216, 0.3)',
               fontFamily: "'Poppins', sans-serif",
               letterSpacing: '0.5px',
               display: 'flex',
@@ -2355,7 +2306,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
               gap: '0.75rem'
             }}
           >
-            <span>✨</span> Share Post
+            <span></span> Share Post
           </motion.button>
         </div>
       </div>
@@ -2366,17 +2317,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
         flexDirection: 'column',
         gap: '1.5rem'
       }}>
-      {isLoading ? (
-          <div style={{
-            textAlign: 'center',
-            padding: '3rem',
-            color: '#A4B0BE',
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: '1.1rem'
-          }}>
-            Loading posts...
-        </div>
-        ) : posts && posts.length > 0 ? (
+      {posts && posts.length > 0 ? (
           posts.map((post) => (
         <motion.div
               key={post.id}
@@ -2384,7 +2325,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
           style={{
                 background: 'linear-gradient(to bottom, #FFFFFF 0%, #F8FAFF 100%)',
                 borderRadius: '24px',
-                boxShadow: '0 8px 32px 0 rgba(255, 107, 107, 0.12)',
+                boxShadow: '0 8px 32px 0 rgba(29, 78, 216, 0.12)',
                 border: '1px solid rgba(242, 243, 247, 0.8)',
                 padding: '2rem',
                 position: 'relative',
@@ -2398,7 +2339,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
                 left: 0,
                 width: '6px',
                 height: '100%',
-                background: 'linear-gradient(to bottom, #FF6B6B 0%, #4ECDC4 100%)'
+                background: 'linear-gradient(to bottom, #1d4ed8 0%, #3b82f6 100%)'
               }}></div>
 
               <div style={{
@@ -2412,7 +2353,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
                   width: '48px',
                   height: '48px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #4ECDC4 0%, #6A4C93 100%)',
+                  background: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -2420,7 +2361,7 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
                   fontWeight: '700',
                   fontSize: '1.2rem',
                   fontFamily: "'Poppins', sans-serif",
-                  boxShadow: '0 4px 14px rgba(78, 205, 196, 0.3)'
+                  boxShadow: '0 4px 14px rgba(29, 78, 216, 0.3)'
                 }}>
                   {post.authorName ? post.authorName.charAt(0).toUpperCase() : 'U'}
                 </div>
@@ -2435,21 +2376,21 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
                       fontSize: '1.2rem',
                       fontWeight: '700',
                       margin: 0,
-                      color: '#2F3542',
+                      color: colors.text,
                       fontFamily: "'Poppins', sans-serif"
                     }}>
                       {post.authorName || 'Unknown User'}
                     </h4>
                     <span style={{
                       fontSize: '0.9rem',
-                      color: '#A4B0BE',
+                      color: colors.textSecondary,
                       fontFamily: "'Poppins', sans-serif"
                     }}>
                       {post.timestamp}
                     </span>
                   </div>
           <p style={{ 
-                    color: '#2F3542',
+                    color: colors.text,
                     fontSize: '1rem',
                     lineHeight: '1.6',
                     margin: 0,
@@ -2468,15 +2409,15 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
                 marginTop: '1.5rem'
               }}>
           <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 4px 12px rgba(78, 205, 196, 0.2)' }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 4px 12px rgba(29, 78, 216, 0.2)' }}
             whileTap={{ scale: 0.95 }}
                   onClick={() => fetchCommentsForPost(post.id)}
             style={{
                     background: 'transparent',
-                    border: '2px solid #4ECDC4',
+                    border: '2px solid #1d4ed8',
               borderRadius: '12px',
                     padding: '0.75rem 1.5rem',
-                    color: '#4ECDC4',
+                    color: '#1d4ed8',
               fontWeight: '600',
                     fontSize: '0.95rem',
               cursor: 'pointer',
@@ -2519,14 +2460,14 @@ function CommunityTab({ colors, posts: initialPosts, onCreatePost, isLoading }) 
             <h4 style={{
               fontSize: '1.3rem',
               fontWeight: '700',
-              color: '#2F3542',
+              color: colors.text,
               marginBottom: '0.75rem',
               fontFamily: "'Poppins', sans-serif"
             }}>
               No posts yet
             </h4>
             <p style={{
-              color: '#A4B0BE',
+              color: colors.textSecondary,
               fontFamily: "'Poppins', sans-serif",
               fontSize: '1rem'
             }}>
